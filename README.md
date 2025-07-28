@@ -3,6 +3,7 @@
 ## Project Overview
 
 **Project Title**: Retail Sales Analysis 
+
 **Database**: `pl_retail_db`
 
 This project involves setting up a retail sales database and performing exploratory data analysis (EDA).
