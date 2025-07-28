@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-**Project Title**: Retail Sales Analysis  
-**Level**: Beginner  
-**Database**: `p1_retail_db`
+**Project Title**: Retail Sales Analysis 
+**Database**: `retail_db`
 
-This project is designed to demonstrate SQL skills and techniques typically used by data analysts to explore, clean, and analyze retail sales data. The project involves setting up a retail sales database, performing exploratory data analysis (EDA), and answering specific business questions through SQL queries. This project is ideal for those who are starting their journey in data analysis and want to build a solid foundation in SQL.
+This project involves setting up a retail sales database, performing exploratory data analysis (EDA).
+The project revolves around a transactional retail dataset with fields including transaction details, customer demographics, product categories, sales amounts, and time-based attributes. The SQL scripts provide a structured approach to answering business questions and deriving actionable insights.
 
 ## Objectives
 
@@ -19,8 +19,8 @@ This project is designed to demonstrate SQL skills and techniques typically used
 
 ### 1. Database Setup
 
-- **Database Creation**: The project starts by creating a database named `p1_retail_db`.
-- **Table Creation**: A table named `retail_sales` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
+- **Database Creation**: The project starts by creating a database named `retail_sql`.
+- **Table Creation**: A table named `retail_` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
 
 ```sql
 CREATE DATABASE p1_retail_db;
@@ -70,27 +70,24 @@ WHERE
 
 The following SQL queries were developed to answer specific business questions:
 
-1. **Write a SQL query to retrieve all columns for sales made on '2022-11-05**:
+1. **retrieve all columns for sales made on '2022-11-05**:
 ```sql
 SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
 
-2. **Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022**:
+2. **retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022**:
 ```sql
-SELECT 
-  *
-FROM retail_sales
-WHERE 
-    category = 'Clothing'
-    AND 
-    TO_CHAR(sale_date, 'YYYY-MM') = '2022-11'
-    AND
-    quantity >= 4
+SELECT *
+FROM retail
+WHERE category = 'Clothing' 	
+	AND	sale_date >= DATE '2022-11-01'
+	AND sale_date < DATE '2022-12-01'
+	AND quantity >= 4
 ```
 
-3. **Write a SQL query to calculate the total sales (total_sale) for each category.**:
+3. **calculate the total sales (total_sale) for each category.**:
 ```sql
 SELECT 
     category,
@@ -100,7 +97,7 @@ FROM retail_sales
 GROUP BY 1
 ```
 
-4. **Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.**:
+4. **average age of customers who purchased items from the 'Beauty' category.**:
 ```sql
 SELECT
     ROUND(AVG(age), 2) as avg_age
@@ -108,13 +105,13 @@ FROM retail_sales
 WHERE category = 'Beauty'
 ```
 
-5. **Write a SQL query to find all transactions where the total_sale is greater than 1000.**:
+5. **all transactions where the total_sale is greater than 1000.**:
 ```sql
 SELECT * FROM retail_sales
 WHERE total_sale > 1000
 ```
 
-6. **Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.**:
+6. **total number of transactions (transaction_id) made by each gender in each category.**:
 ```sql
 SELECT 
     category,
@@ -128,7 +125,7 @@ GROUP
 ORDER BY 1
 ```
 
-7. **Write a SQL query to calculate the average sale for each month. Find out best selling month in each year**:
+7. **average sale for each month. Find out best selling month in each year**:
 ```sql
 SELECT 
        year,
@@ -147,7 +144,7 @@ GROUP BY 1, 2
 WHERE rank = 1
 ```
 
-8. **Write a SQL query to find the top 5 customers based on the highest total sales **:
+8. ** top 5 customers based on the highest total sales **:
 ```sql
 SELECT 
     customer_id,
@@ -158,7 +155,7 @@ ORDER BY 2 DESC
 LIMIT 5
 ```
 
-9. **Write a SQL query to find the number of unique customers who purchased items from each category.**:
+9. **number of unique customers who purchased items from each category.**:
 ```sql
 SELECT 
     category,    
@@ -167,7 +164,7 @@ FROM retail_sales
 GROUP BY category
 ```
 
-10. **Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)**:
+10. **create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17)**:
 ```sql
 WITH hourly_sale
 AS
@@ -189,10 +186,25 @@ GROUP BY shift
 
 ## Findings
 
-- **Customer Demographics**: The dataset includes customers from various age groups, with sales distributed across different categories such as Clothing and Beauty.
-- **High-Value Transactions**: Several transactions had a total sale amount greater than 1000, indicating premium purchases.
-- **Sales Trends**: Monthly analysis shows variations in sales, helping identify peak seasons.
-- **Customer Insights**: The analysis identifies the top-spending customers and the most popular product categories.
+The retail sales analysis revealed several actionable insights:
+
+## **1. Customer Engagement**
+- A large number of **unique customers** contribute to overall sales, with strong engagement in categories like **Clothing** and **Beauty**.
+- **High-value transactions (above 1,000)** highlight the presence of **premium buyers** who can be targeted for VIP campaigns.
+
+## **2. Category Performance**
+- **Clothing** generates consistent transaction volumes.
+- **Beauty** attracts **younger demographics**, suggesting opportunities for youth-focused promotions.
+- Sales vary widely across categories, indicating the need for **category-specific marketing strategies**.
+
+## **3. Sales Timing Trends**
+- Most sales occur during **Afternoon and Evening shifts**, making these periods ideal for running **promotions and flash sales**.
+- **Monthly performance analysis** shows identifiable **peak sales months**, which can inform inventory and staffing plans.
+
+## **4. Top Customers & Revenue Drivers**
+- The **top 5 customers** account for a significant share of revenue.
+- This emphasizes the value of implementing **customer loyalty programs** and **personalized offers** to retain high-value clients.
+
 
 ## Reports
 
@@ -202,26 +214,7 @@ GROUP BY shift
 
 ## Conclusion
 
-This project serves as a comprehensive introduction to SQL for data analysts, covering database setup, data cleaning, exploratory data analysis, and business-driven SQL queries. The findings from this project can help drive business decisions by understanding sales patterns, customer behavior, and product performance.
+This SQL-driven exploration provides **data-backed insights** that can guide **marketing strategies**, **inventory decisions**, and **customer engagement efforts**, ultimately improving **revenue** and **operational efficiency**.
 
-## How to Use
 
-1. **Clone the Repository**: Clone this project repository from GitHub.
-2. **Set Up the Database**: Run the SQL scripts provided in the `database_setup.sql` file to create and populate the database.
-3. **Run the Queries**: Use the SQL queries provided in the `analysis_queries.sql` file to perform your analysis.
-4. **Explore and Modify**: Feel free to modify the queries to explore different aspects of the dataset or answer additional business questions.
 
-## Author - Zero Analyst
-
-This project is part of my portfolio, showcasing the SQL skills essential for data analyst roles. If you have any questions, feedback, or would like to collaborate, feel free to get in touch!
-
-### Stay Updated and Join the Community
-
-For more content on SQL, data analysis, and other data-related topics, make sure to follow me on social media and join our community:
-
-- **YouTube**: [Subscribe to my channel for tutorials and insights](https://www.youtube.com/@zero_analyst)
-- **Instagram**: [Follow me for daily tips and updates](https://www.instagram.com/zero_analyst/)
-- **LinkedIn**: [Connect with me professionally](https://www.linkedin.com/in/najirr)
-- **Discord**: [Join our community to learn and grow together](https://discord.gg/36h5f2Z5PK)
-
-Thank you for your support, and I look forward to connecting with you!
