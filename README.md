@@ -3,9 +3,9 @@
 ## Project Overview
 
 **Project Title**: Retail Sales Analysis 
-**Database**: `retail_db`
+**Database**: `pl_retail_db`
 
-This project involves setting up a retail sales database, performing exploratory data analysis (EDA).
+This project involves setting up a retail sales database and performing exploratory data analysis (EDA).
 The project revolves around a transactional retail dataset with fields including transaction details, customer demographics, product categories, sales amounts, and time-based attributes. The SQL scripts provide a structured approach to answering business questions and deriving actionable insights.
 
 ## Objectives
@@ -19,8 +19,8 @@ The project revolves around a transactional retail dataset with fields including
 
 ### 1. Database Setup
 
-- **Database Creation**: The project starts by creating a database named `retail_sql`.
-- **Table Creation**: A table named `retail_` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
+- **Database Creation**: The project starts by creating a database named `pl_retail_db`.
+- **Table Creation**: A table named `retail_sales` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
 
 ```sql
 CREATE DATABASE p1_retail_db;
@@ -185,23 +185,22 @@ GROUP BY shift
 ```
 
 ## Findings
-
 The retail sales analysis revealed several actionable insights:
 
-## **1. Customer Engagement**
+**1. Customer Engagement**
 - A large number of **unique customers** contribute to overall sales, with strong engagement in categories like **Clothing** and **Beauty**.
 - **High-value transactions (above 1,000)** highlight the presence of **premium buyers** who can be targeted for VIP campaigns.
 
-## **2. Category Performance**
+**2. Category Performance**
 - **Clothing** generates consistent transaction volumes.
 - **Beauty** attracts **younger demographics**, suggesting opportunities for youth-focused promotions.
 - Sales vary widely across categories, indicating the need for **category-specific marketing strategies**.
 
-## **3. Sales Timing Trends**
+**3. Sales Timing Trends**
 - Most sales occur during **Afternoon and Evening shifts**, making these periods ideal for running **promotions and flash sales**.
 - **Monthly performance analysis** shows identifiable **peak sales months**, which can inform inventory and staffing plans.
 
-## **4. Top Customers & Revenue Drivers**
+ **4. Top Customers & Revenue Drivers**
 - The **top 5 customers** account for a significant share of revenue.
 - This emphasizes the value of implementing **customer loyalty programs** and **personalized offers** to retain high-value clients.
 
